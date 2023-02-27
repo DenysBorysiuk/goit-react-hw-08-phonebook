@@ -1,5 +1,5 @@
 export const theme = Object.freeze({
-  primaryBgCl: '#e0e0e0',
+  primaryBgCl: '#1e2f3a',
 
   boxShadow: {
     Out: '-5px -5px 9px rgba(255, 255, 255, 0.45), 5px 5px 9px rgba(94, 104, 121, 0.3)',

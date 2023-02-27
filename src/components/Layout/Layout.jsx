@@ -1,15 +1,17 @@
-import { Container, Title } from './Layout.styled';
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { AppBar } from 'components/AppBar/AppBar';
+import { Suspense } from 'react';
+import { Container } from './Layout.styled';
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   return (
     <Container>
-      <Title>Phonebook</Title>
-      {children}
+      <AppBar />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+      <Toaster position="top-right" reverseOrder={false} />
     </Container>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node,
 };

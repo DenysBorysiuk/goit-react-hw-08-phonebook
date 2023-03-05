@@ -2,15 +2,17 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   max-width: 960px;
-  border: 1px solid black;
   margin: 0 auto;
   padding: 0 16px;
-  // background-color: ${props => props.theme.primaryBgCl};
 `;
 
-// export const Title = styled.h1`
-//   display: inline-block;
-//   padding: 4px 16px;
-//   border-radius: ${props => props.theme.borderRadius};
-//   box-shadow: ${props => props.theme.boxShadow.Out};
-// `;
+export const Footer = styled.footer`
+  padding: 30px 0;
+  background-color: #232f3d;
+  text-align: center;
+  color: #8f9eb2;
+
+  > span {
+    color: #6487ef;
+  }
+`;

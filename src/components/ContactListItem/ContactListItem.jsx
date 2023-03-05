@@ -1,8 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
-import { Item, ContactText, ContactBtn } from './ContactListItem.styled';
-import { BsPersonFill, BsXLg } from 'react-icons/bs';
+import {
+  Item,
+  ContactName,
+  ContactNumber,
+  ContactBtn,
+  Avatar,
+  TextWrapper,
+} from './ContactListItem.styled';
+import { BsPersonFill, BsXLg, BsFillTelephoneFill } from 'react-icons/bs';
 
 export const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
@@ -10,10 +17,17 @@ export const ContactListItem = ({ id, name, number }) => {
 
   return (
     <Item>
-      <ContactText>
-        <BsPersonFill />
-        &nbsp;{name}: {number}
-      </ContactText>
+      <Avatar>A</Avatar>
+      <TextWrapper>
+        <ContactName>
+          <BsPersonFill />
+          {name}
+        </ContactName>
+        <ContactNumber>
+          <BsFillTelephoneFill size="14" />
+          {number}
+        </ContactNumber>
+      </TextWrapper>
       <ContactBtn onClick={handleDelete}>
         <BsXLg />
       </ContactBtn>

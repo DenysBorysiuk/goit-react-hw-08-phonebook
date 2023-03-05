@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const Form = styled.form`
   display: flex;
@@ -21,7 +22,6 @@ export const Title = styled.h2`
   color: #8f9eb2;
   text-align: center;
 `;
-
 export const Label = styled.label`
   position: relative;
   color: #8f9eb2;
@@ -74,12 +74,14 @@ export const FormBtn = styled.button`
   justify-content: center;
   margin: 0 auto;
   padding: 8px 16px;
+  width: 100px;
   border-radius: 20px;
   border: 1px solid #8f9eb2;
   background-color: transparent;
   color: #8f9eb2;
   font-weight: 500;
   font-size: 16px;
+
   transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
 
   &:hover {
@@ -87,4 +89,13 @@ export const FormBtn = styled.button`
     background-color: #6487ef;
     color: #ddf2ff;
   }
+`;
+
+export const Link = styled(NavLink)`
+  color: #6487ef;
+`;
+
+export const Desc = styled.span`
+  color: #8f9eb2;
+  text-align: center;
 `;

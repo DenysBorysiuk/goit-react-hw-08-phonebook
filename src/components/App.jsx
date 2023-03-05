@@ -7,15 +7,10 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 
-// const HomePage = lazy(() => import('pages/Home'));
-// const RegisterPage = lazy(() => import('pages/Register'));
-// const LoginPage = lazy(() => import('pages/Login'));
-// const ContactsPage = lazy(() => import('pages/Contacts'));
-
-const HomePage = lazy(() => import('../pages/Home'));
-const RegisterPage = lazy(() => import('../pages/Register'));
-const LoginPage = lazy(() => import('../pages/Login'));
-const ContactsPage = lazy(() => import('../pages/Contacts'));
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,7 +25,12 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
+        <Route
+          index
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<HomePage />} />
+          }
+        />
         <Route
           path="/register"
           element={

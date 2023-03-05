@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/contacts/filtersSlice';
 import { Label, Input } from './Filter.styled';
+import { BsSearch } from 'react-icons/bs';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,8 @@ export const Filter = () => {
 
   return (
     <Label>
-      Find contacts by name
+      <BsSearch />
+      <span>Find contacts by name</span>
       <Input
         type="text"
         name="filter"

@@ -2,36 +2,44 @@ import styled from '@emotion/styled';
 
 export const Label = styled.label`
   display: block;
-  margin: 20px auto;
+  margin: 30px auto;
   padding-top: 10px;
   padding-bottom: 10px;
-  max-width: 50%;
+  max-width: 350px;
+  background-color: #232f3d;
+  color: #8f9eb2;
+  text-align: center;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   border-radius: ${props => props.theme.borderRadius};
-  box-shadow: ${props => props.theme.boxShadow.Out};
+
+  > span {
+    margin-left: 10px;
+  }
 `;
 
 export const Input = styled.input`
   display: block;
-  margin-top: 4px;
+  margin-top: 8px;
   margin-right: auto;
   margin-left: auto;
   padding: 8px 10px;
   width: 80%;
+  color: #8f9eb2;
   background-color: transparent;
-  border: none;
+  border: 1px solid rgba(143, 158, 178, 0.5);
   outline: none;
   border-radius: ${props => props.theme.borderRadius};
-  box-shadow: ${props => props.theme.boxShadow.In};
+  transition: border-color 300ms ease-in-out;
 
   &::placeholder {
     text-align: center;
+    color: #8f9eb2;
   }
 
   &:hover,
   &:focus {
-    box-shadow: ${props => props.theme.boxShadow.Out};
+    border-color: rgba(100, 135, 239, 0.8);
   }
 `;

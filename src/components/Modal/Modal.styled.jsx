@@ -15,6 +15,25 @@ export const Overlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  // max-width: calc(100vw - 48px);
-  // max-height: calc(100vh - 24px);
+  position: relative;
+`;
+
+export const CloseBtn = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  padding: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  color: #8f9eb2;
+
+  border: none;
+  border-radius: 50px;
+
+  transition: color 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: rgba(100, 135, 239, 0.8);
+  }
 `;

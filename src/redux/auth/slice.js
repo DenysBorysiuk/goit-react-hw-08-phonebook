@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './operations';
+import { registration, logIn, logOut, refreshUser } from './operations';
 
-const extraActions = [register, logIn, logOut, refreshUser];
+const extraActions = [registration, logIn, logOut, refreshUser];
 const getActions = type => extraActions.map(action => action[type]);
 
 const initialState = {
@@ -16,7 +16,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     return builder
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(registration.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;

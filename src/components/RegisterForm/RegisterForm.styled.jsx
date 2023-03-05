@@ -1,10 +1,7 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+export const FormWrap = styled.div`
   background-color: #232f3d;
   border-radius: 20px;
   padding: 30px;
@@ -14,14 +11,22 @@ export const Form = styled.form`
   }
 
   @media (min-width: 768px) {
-    width: 350px;
+    width: 320px;
+  }
+
+  > h2 {
+    color: #8f9eb2;
+    text-align: center;
+    margin-bottom: 40px;
   }
 `;
 
-export const Title = styled.h2`
-  color: #8f9eb2;
-  text-align: center;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 `;
+
 export const Label = styled.label`
   position: relative;
   color: #8f9eb2;
@@ -66,6 +71,17 @@ export const Label = styled.label`
     font-size: 18px;
     transform-origin: top left;
     transition: transform 300ms ease-in-out, color 300ms ease-in-out;
+  }
+
+  > p {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 250px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: tomato;
+    text-align: center;
   }
 `;
 

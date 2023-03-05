@@ -1,56 +1,64 @@
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
-import { Form, Title, Label, FormBtn, Link, Desc } from './RegisterForm.styled';
+import { registration } from 'redux/auth/operations';
+import {
+  FormWrap,
+  Form,
+  Label,
+  FormBtn,
+  Link,
+  Desc,
+} from './RegisterForm.styled';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup
+  .object({
+    name: yup.string().min(3).required().trim(),
+    email: yup.string().email().required().trim(),
+    password: yup.string().min(5).required().trim(),
+  })
+  .required();
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
-  } = useForm();
-  const onSubmit = data => console.log(data);
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const form = e.currentTarget;
-  //   dispatch(
-  //     register({
-  //       name: form.elements.name.value,
-  //       email: form.elements.email.value,
-  //       password: form.elements.password.value,
-  //     })
-  //   );
-  //   form.reset();
-  // };
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = data => {
+    dispatch(registration(data));
+    reset();
+  };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-      <Title>Register Here</Title>
-      <Label>
-        <input
-          // type="text"
-          // name="name"
-          placeholder="enter username"
-          {...register('Name', { required: true })}
-        />
-        <span>Username</span>
-        {errors.exampleRequired && <span>This field is required</span>}
-      </Label>
-      <Label>
-        <input type="email" name="email" placeholder="enter email" />
-        <span>Email</span>
-      </Label>
-      <Label>
-        <input type="password" name="password" placeholder="enter password" />
-        <span>Password</span>
-      </Label>
-      <FormBtn type="submit">Register</FormBtn>
-      <Desc>
-        Have an account? <Link to="/login">LogIn</Link>
-      </Desc>
-    </Form>
+    <FormWrap>
+      <h2>Register Here</h2>
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <Label>
+          <input {...register('name')} placeholder="enter username" />
+          <span>Username</span>
+          {errors.name && <p>{errors.name.message}</p>}
+        </Label>
+        <Label>
+          <input {...register('email')} placeholder="enter email" />
+          <span>Email</span>
+          {errors.email && <p>{errors.email.message}</p>}
+        </Label>
+        <Label>
+          <input {...register('password')} placeholder="enter password" />
+          <span>Password</span>
+          {errors.password && <p>{errors.password.message}</p>}
+        </Label>
+        <FormBtn type="submit">Register</FormBtn>
+        <Desc>
+          Have an account? <Link to="/login">LogIn</Link>
+        </Desc>
+      </Form>
+    </FormWrap>
   );
 };

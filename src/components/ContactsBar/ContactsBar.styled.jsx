@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   margin: 20px auto;
   justify-content: space-between;
   align-items: center;
-  max-width: 350px;
+  max-width: 400px;
 `;
 
 export const AddBtn = styled.button`

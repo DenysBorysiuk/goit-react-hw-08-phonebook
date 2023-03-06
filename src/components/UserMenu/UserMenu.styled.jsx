@@ -10,7 +10,7 @@ export const Menu = styled.div`
 export const Email = styled.p`
   color: #fff;
 
-  @media (min-width: 320px) {
+  @media (min-width: 200px) {
     font-size: 10px;
   }
 

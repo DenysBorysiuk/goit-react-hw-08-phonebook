@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
-import { Form, Label, FormBtn, FormWrap } from './ContactForm.styled';
-import { BsPersonPlusFill } from 'react-icons/bs';
+import { updateContact } from 'redux/contacts/operations';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { Form, Label, FormBtn, FormWrap } from './EditForm.styled';
 import toast from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
@@ -16,10 +15,9 @@ const schema = yup
       .min(3)
       .max(12)
       .required()
-      .lowercase()
       .trim()
       .matches(
-        /^[a-zA-Z]+(([' -][a-zA-Z])?[a-zA-Z]*)*$/,
+        /^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$/,
         'Name may contain only letters, apostrophe, dash and spaces.'
       ),
     number: yup
@@ -32,34 +30,39 @@ const schema = yup
   })
   .required();
 
-export const ContactForm = ({ onClose }) => {
+export const EditForm = ({ id, name, number, onClose }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      name,
+      number,
+    },
   });
 
   const onSubmit = data => {
     if (
       contacts.find(
-        option => option.name.toLowerCase() === data.name.toLowerCase()
+        option =>
+          option.name.toLowerCase() === data.name.toLowerCase() ||
+          option.number === data.number
       )
     ) {
-      return toast.error(`${data.name} is already in contacts`);
+      return toast.error(`contact not changed`);
     }
-    dispatch(addContact(data));
-    reset();
+    dispatch(updateContact({ id, ...data }));
     onClose();
   };
 
   return (
     <FormWrap>
-      <h2>Contact</h2>
+      <h2>Edit contact</h2>
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <Label>
           <input {...register('name')} placeholder="Enter contact name" />
@@ -71,15 +74,15 @@ export const ContactForm = ({ onClose }) => {
           <span>Number</span>
           {errors.number && <p>{errors.number.message}</p>}
         </Label>
-        <FormBtn type="submit">
-          <BsPersonPlusFill />
-          &nbsp; Add contact
-        </FormBtn>
+        <FormBtn type="submit">Save</FormBtn>
       </Form>
     </FormWrap>
   );
 };
 
-ContactForm.propTypes = {
+EditForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   onClose: PropTypes.func,
 };

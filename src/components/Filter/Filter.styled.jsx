@@ -5,7 +5,7 @@ export const Label = styled.label`
   margin: 30px auto;
   padding-top: 10px;
   padding-bottom: 10px;
-  max-width: 350px;
+  max-width: 400px;
   background-color: #232f3d;
   color: #8f9eb2;
   text-align: center;

@@ -8,6 +8,7 @@ import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Helmet } from 'react-helmet';
 import { ContactsBar } from 'components/ContactsBar/ContactsBar';
+import { Loader } from 'components/Loader/Loader';
 
 const styles = {
   container: {
@@ -33,12 +34,13 @@ const Contacts = () => {
         <title>Contacts</title>
       </Helmet>
       <Filter />
+
       <ContactsBar onOpen={toggleModal} />
-      {isLoading && !error && <b>Request in progress...</b>}
+      {isLoading && !error && <Loader />}
       <ContactList />
       {showModal && (
         <Modal onClose={toggleModal}>
-          <ContactForm />
+          <ContactForm onClose={toggleModal} />
         </Modal>
       )}
     </div>

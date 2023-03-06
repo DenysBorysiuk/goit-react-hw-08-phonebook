@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const FormWrap = styled.div`
-  background-color: #232f3d;
-  border-radius: 20px;
+  background-color: ${props => props.theme.secondaryBgCl};
+  border-radius: ${props => props.theme.borderRadius};
   padding: 30px;
 
   @media (min-width: 320px) {
@@ -89,7 +89,7 @@ export const FormBtn = styled.button`
   justify-content: center;
   margin: 0 auto;
   padding: 8px 16px;
-  border-radius: 20px;
+  border-radius: ${props => props.theme.borderRadius};
   border: 1px solid #8f9eb2;
   background-color: transparent;
   color: #8f9eb2;

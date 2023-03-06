@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const FormWrap = styled.div`
-  background-color: #232f3d;
-  border-radius: 20px;
+  background-color: ${props => props.theme.secondaryBgCl};
+  border-radius: ${props => props.theme.borderRadius};
   padding: 30px;
 
   @media (min-width: 320px) {
@@ -15,7 +15,6 @@ export const FormWrap = styled.div`
   }
 
   > h2 {
-    color: #8f9eb2;
     text-align: center;
     margin-bottom: 40px;
   }
@@ -29,7 +28,6 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   position: relative;
-  color: #8f9eb2;
 
   > input {
     width: 100%;
@@ -37,9 +35,9 @@ export const Label = styled.label`
     border-bottom: 1px solid #8f9eb2;
     padding: 8px 4px;
 
+    color: #8f9eb2;
     background-color: transparent;
     outline: transparent;
-    color: #8f9eb2;
     transition: border-color 300ms ease-in-out;
 
     &:focus,
@@ -91,7 +89,7 @@ export const FormBtn = styled.button`
   margin: 0 auto;
   padding: 8px 16px;
   width: 100px;
-  border-radius: 20px;
+  border-radius: ${props => props.theme.borderRadius};
   border: 1px solid #8f9eb2;
   background-color: transparent;
   color: #8f9eb2;

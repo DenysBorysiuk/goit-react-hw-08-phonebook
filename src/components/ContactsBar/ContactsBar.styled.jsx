@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
 export const AddBtn = styled.button`
   padding: 8px 16px;
-  border-radius: 20px;
+  border-radius: ${props => props.theme.borderRadius};
   border: 1px solid #8f9eb2;
   background-color: transparent;
   color: #8f9eb2;

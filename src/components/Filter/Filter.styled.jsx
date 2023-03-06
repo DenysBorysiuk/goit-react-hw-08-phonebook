@@ -6,12 +6,11 @@ export const Label = styled.label`
   padding-top: 10px;
   padding-bottom: 10px;
   max-width: 400px;
-  background-color: #232f3d;
-  color: #8f9eb2;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  background-color: ${props => props.theme.secondaryBgCl};
   border-radius: ${props => props.theme.borderRadius};
 
   > span {

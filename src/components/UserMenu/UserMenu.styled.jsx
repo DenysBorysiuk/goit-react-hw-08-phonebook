@@ -23,7 +23,7 @@ export const LogoutBtn = styled.button`
   color: #8f9eb2;
   padding: 4px 0;
   width: 100px;
-  border-radius: 20px;
+  border-radius: ${props => props.theme.borderRadius};
   border: 1px solid #8f9eb2;
   background-color: transparent;
   transition: color 300ms ease-in-out, background-color 300ms ease-in-out;

@@ -8,9 +8,8 @@ export const Container = styled.div`
 
 export const Footer = styled.footer`
   padding: 30px 0;
-  background-color: #232f3d;
+  background-color: ${props => props.theme.secondaryBgCl};
   text-align: center;
-  color: #8f9eb2;
 
   > span {
     color: #6487ef;

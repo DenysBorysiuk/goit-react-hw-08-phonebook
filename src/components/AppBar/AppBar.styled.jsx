@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Header = styled.header`
-  background-color: #232f3d;
+  background-color: ${props => props.theme.secondaryBgCl};
 `;
 
 export const Container = styled.div`
@@ -20,7 +20,6 @@ export const Logo = styled.span`
   margin-right: auto;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #8f9eb2;
   text-decoration: none;
   font-weight: 500;
 

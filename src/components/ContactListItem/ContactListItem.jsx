@@ -33,7 +33,7 @@ export const ContactListItem = ({ id, name, number }) => {
         <TextWrapper>
           <ContactName>
             <BsPersonFill />
-            {name[0].toUpperCase() + name.slice(1)}
+            {name}
           </ContactName>
           <ContactNumber>
             <BsFillTelephoneFill size="14" />

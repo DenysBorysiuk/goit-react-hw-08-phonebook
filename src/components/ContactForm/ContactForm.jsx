@@ -16,7 +16,6 @@ const schema = yup
       .min(3)
       .max(12)
       .required()
-      .lowercase()
       .trim()
       .matches(
         /^[a-zA-Z]+(([' -][a-zA-Z])?[a-zA-Z]*)*$/,

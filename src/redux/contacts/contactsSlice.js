@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import {
   fetchContacts,
   addContact,
@@ -44,6 +45,7 @@ const contactsSlice = createSlice({
       .addMatcher(isAnyOf(...getActions('rejected')), (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        toast.error(`Something went wrong`);
       })
       .addMatcher(isAnyOf(...getActions('fulfilled')), state => {
         state.isLoading = false;

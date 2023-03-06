@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
+import { useDispatch } from 'react-redux';
 import { updateContact } from 'redux/contacts/operations';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,7 +31,6 @@ const schema = yup
 
 export const EditForm = ({ id, name, number, onClose }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
 
   const {
     register,
@@ -47,13 +45,7 @@ export const EditForm = ({ id, name, number, onClose }) => {
   });
 
   const onSubmit = data => {
-    if (
-      contacts.find(
-        option =>
-          option.name.toLowerCase() === data.name.toLowerCase() ||
-          option.number === data.number
-      )
-    ) {
+    if (name === data.name && number === data.number) {
       return toast.error(`contact not changed`);
     }
     dispatch(updateContact({ id, ...data }));
